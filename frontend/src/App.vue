@@ -11,11 +11,10 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'App',
-
-  data () {
-    return {
-      //
-    }
+  mounted() {
+    this.axios.get('http://localhost:9000').then(e => {
+      console.log(e)
+    })
   },
 })
 </script>

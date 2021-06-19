@@ -1,10 +1,14 @@
 package app
 
 import (
+	_ "fmt"
+	"github.com/auth0/go-jwt-middleware"
 	_ "github.com/revel/modules"
 	"github.com/revel/revel"
 	"net/http"
 )
+
+import controllers "LetsGooooo/app/controllers"
 
 var (
 	// AppVersion revel app version (ldflags)
@@ -15,6 +19,12 @@ var (
 )
 
 func init() {
+	jwtmiddleware.New(jwtmiddleware.Options{
+		// Will fill in next
+	})
+
+	revel.FilterController(controllers.App{}).Insert(authFilter, revel.BEFORE, revel.ActionInvoker)
+
 	// Filters is the default set of global filters.
 	revel.Filters = []revel.Filter{
 		ValidateOrigin,
@@ -36,7 +46,7 @@ func init() {
 	// Register startup functions with OnAppStart
 	// revel.DevMode and revel.RunMode only work inside of OnAppStart. See Example Startup Script
 	// ( order dependent )
-	// revel.OnAppStart(ExampleStartupScript)
+	//revel.OnAppStart(ExampleStartupScript)
 	// revel.OnAppStart(InitDB)
 	// revel.OnAppStart(FillCache)
 }
@@ -60,6 +70,12 @@ var HeaderFilter = func(c *revel.Controller, fc []revel.Filter) {
 //		// Dev mode
 //	}
 //}
+
+var authFilter = func(c *revel.Controller, fc[] revel.Filter) {
+	revel.AppLog.Info("Hi there")
+
+	fc[0](c, fc[1:])  // Execute the next filter stage.
+}
 
 var ValidateOrigin = func(c *revel.Controller, fc []revel.Filter) {
 	if c.Request.Method == "OPTIONS" {

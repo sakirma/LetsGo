@@ -4,7 +4,7 @@ import (
 	"github.com/revel/revel"
 )
 
-type Stuff struct {
+type stuff struct {
 	Hello string
 	Foo string ` json:"foo" xml:"foo" `
 	Bar int ` json:"bar" xml:"bar" `
@@ -15,7 +15,9 @@ type App struct {
 }
 
 func (c App) Index() revel.Result {
-	stuff := Stuff{Foo: "Oke", Bar: 69, Hello: "Hellooo"}
+	stuff := stuff{Foo: "Oke", Bar: 69, Hello: "Hellooo"}
 
 	return c.RenderJSON(stuff)
 }
+
+
