@@ -4,20 +4,32 @@ import (
 	"github.com/revel/revel"
 )
 
-type stuff struct {
-	Hello string
-	Foo string ` json:"foo" xml:"foo" `
-	Bar int ` json:"bar" xml:"bar" `
-}
+
 
 type App struct {
 	*revel.Controller
 }
 
 func (c App) Index() revel.Result {
-	stuff := stuff{Foo: "Oke", Bar: 69, Hello: "Hellooo"}
 
-	return c.RenderJSON(stuff)
+	return c.RenderText("what the hell are you doing here?")
 }
 
 
+type credentials struct {
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
+
+func (c App) Login(username string, password string) revel.Result {
+	//content := credentials{}
+	//err := c.Params.BindJSON(&content)
+	//
+	//if err != nil {
+	//	c.Response.Status = http.StatusBadRequest
+	//	return c.RenderText(err.Error())
+	//}
+	//
+	//return c.RenderJSON(content)
+	return c.RenderText(username + " " + password)
+}

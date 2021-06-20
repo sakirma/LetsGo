@@ -2,51 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/Knetic/govaluate" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/Masterminds/squirrel" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/andybalholm/brotli" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/auth0/go-jwt-middleware" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/casbin/casbin" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/codegangsta/inject" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/flosch/pongo2" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/form3tech-oss/jwt-go" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/fsnotify/fsnotify" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/go-gorp/gorp" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/go-martini/martini" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/go-sql-driver/mysql" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/go-stack/stack" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/gorilla/mux" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/inconshreveable/log15" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/jinzhu/gorm" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/jinzhu/inflection" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/jtolds/gls" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/klauspost/compress" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/lann/builder" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/lann/ps" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/lib/pq" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/mattn/go-colorable" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/mattn/go-isatty" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/mattn/go-sqlite3" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/newrelic/go-agent" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/revel/config" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/revel/cron" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/revel/log15" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/revel/modules" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/revel/pathtree" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/revel/revel" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/smartystreets/assertions" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/smartystreets/goconvey" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/twinj/uuid" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/tylerb/gls" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/urfave/negroni" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/valyala/bytebufferpool" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/valyala/fasthttp" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/xeonx/timeago" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/github.com/yosssi/ace" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/golang.org/x/crypto" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/golang.org/x/net" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/golang.org/x/sys" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/gopkg.in/natefinch/lumberjack.v2" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/gopkg.in/stack.v0" vcs="Git" />
   </component>
 </project>

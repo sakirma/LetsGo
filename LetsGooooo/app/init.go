@@ -3,12 +3,16 @@ package app
 import (
 	_ "fmt"
 	"github.com/auth0/go-jwt-middleware"
+	_ "github.com/go-sql-driver/mysql"
+	"github.com/jinzhu/gorm"
 	_ "github.com/revel/modules"
 	"github.com/revel/revel"
+	"log"
 	"net/http"
 )
 
 import controllers "LetsGooooo/app/controllers"
+
 
 var (
 	// AppVersion revel app version (ldflags)
@@ -17,6 +21,9 @@ var (
 	// BuildTime revel app build-time (ldflags)
 	BuildTime string
 )
+
+// DB object
+var DB *gorm.DB
 
 func init() {
 	jwtmiddleware.New(jwtmiddleware.Options{
@@ -47,7 +54,7 @@ func init() {
 	// revel.DevMode and revel.RunMode only work inside of OnAppStart. See Example Startup Script
 	// ( order dependent )
 	//revel.OnAppStart(ExampleStartupScript)
-	// revel.OnAppStart(InitDB)
+	revel.OnAppStart(InitDB)
 	// revel.OnAppStart(FillCache)
 }
 
@@ -70,6 +77,17 @@ var HeaderFilter = func(c *revel.Controller, fc []revel.Filter) {
 //		// Dev mode
 //	}
 //}
+
+// DB initialization
+func InitDB() {
+	dbInfo, _ := revel.Config.String("db.info")
+	db, err := gorm.Open("mysql", dbInfo)
+	if err != nil {
+		log.Panicf("Failed gorm.Open: %v\n", err)
+	}
+
+	DB = db
+}
 
 var authFilter = func(c *revel.Controller, fc[] revel.Filter) {
 	revel.AppLog.Info("Hi there")
