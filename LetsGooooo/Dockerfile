@@ -2,8 +2,6 @@ FROM golang:latest
 EXPOSE 9000
 
 WORKDIR /code/LetsGooooo
-COPY . .
-
 
 RUN set -x \
     # go get revel

@@ -1,13 +1,19 @@
 package controllers
 
 import (
+	"LetsGooooo/app"
+	"LetsGooooo/app/models"
 	"github.com/revel/revel"
+	"golang.org/x/crypto/bcrypt"
+	"net/http"
 )
-
-
 
 type App struct {
 	*revel.Controller
+}
+
+func init() {
+	revel.FilterController(App{}).Insert(authFilter, revel.BEFORE, revel.ActionInvoker)
 }
 
 func (c App) Index() revel.Result {
@@ -15,21 +21,31 @@ func (c App) Index() revel.Result {
 	return c.RenderText("what the hell are you doing here?")
 }
 
+func (c App) Register(username string, password string) revel.Result {
+	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
+	if err != nil {
+		revel.AppLog.Error("Couldn't hash password", err)
+		c.Response.Status = http.StatusInternalServerError
+		return c.Render()
+	}
 
-type credentials struct {
-	Username string `json:"username"`
-	Password string `json:"password"`
+	user := models.User{}
+	app.DB.Where("username = ?", username).First(&user)
+	if user.ID == 0 {
+		user = models.User{Username: username, Password: hashedPassword}
+		app.DB.Create(&user)
+
+		c.Response.Status = http.StatusCreated
+		return c.RenderJSON(user)
+	}
+
+	c.Response.Status = http.StatusBadRequest
+	err = bcrypt.CompareHashAndPassword(user.Password, []byte(password))
+	return c.RenderText("User already exists by that name" ,  err)
 }
 
-func (c App) Login(username string, password string) revel.Result {
-	//content := credentials{}
-	//err := c.Params.BindJSON(&content)
-	//
-	//if err != nil {
-	//	c.Response.Status = http.StatusBadRequest
-	//	return c.RenderText(err.Error())
-	//}
-	//
-	//return c.RenderJSON(content)
-	return c.RenderText(username + " " + password)
+var authFilter = func(c *revel.Controller, fc[] revel.Filter) {
+	revel.AppLog.Info("Hi there")
+
+	fc[0](c, fc[1:])  // Execute the next filter stage.
 }

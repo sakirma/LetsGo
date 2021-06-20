@@ -1,18 +1,13 @@
 package app
 
 import (
-	_ "fmt"
 	"github.com/auth0/go-jwt-middleware"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
-	_ "github.com/revel/modules"
 	"github.com/revel/revel"
 	"log"
 	"net/http"
 )
-
-import controllers "LetsGooooo/app/controllers"
-
 
 var (
 	// AppVersion revel app version (ldflags)
@@ -30,7 +25,6 @@ func init() {
 		// Will fill in next
 	})
 
-	revel.FilterController(controllers.App{}).Insert(authFilter, revel.BEFORE, revel.ActionInvoker)
 
 	// Filters is the default set of global filters.
 	revel.Filters = []revel.Filter{
@@ -78,7 +72,6 @@ var HeaderFilter = func(c *revel.Controller, fc []revel.Filter) {
 //	}
 //}
 
-// DB initialization
 func InitDB() {
 	dbInfo, _ := revel.Config.String("db.info")
 	db, err := gorm.Open("mysql", dbInfo)
@@ -87,12 +80,6 @@ func InitDB() {
 	}
 
 	DB = db
-}
-
-var authFilter = func(c *revel.Controller, fc[] revel.Filter) {
-	revel.AppLog.Info("Hi there")
-
-	fc[0](c, fc[1:])  // Execute the next filter stage.
 }
 
 var ValidateOrigin = func(c *revel.Controller, fc []revel.Filter) {
